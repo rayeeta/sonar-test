@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMT DevOps Group Practice</title>
+    <style>
+        :root {
+            --primary-blue: #2b6cb0;
+            --medium-blue: #3182ce;
+            --light-blue: #90cdf4;
+            --dark-gray: #2d3748;
+            --medium-gray: #a0aec0;
+            --light-gray: #e2e8f0;
+            --white: #ffffff;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+        }
+        header {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 20px;
+        }
+        h1 { font-size: 2.5em; margin: 0; }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .content { background: var(--white); padding: 20px; border-radius: 8px; }
+        .introductions-box {
+            border: 1px solid var(--light-blue);
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+        }
+        h2 { color: var(--medium-blue); font-size: 1.8em; }
+        h3 { font-size: 1.5em; color: var(--dark-gray); }
+        p, li { font-size: 1em; line-height: 1.6; }
+        #introductions li {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: var(--light-blue);
+            border-radius: 4px;
+        }
+        #intro-data { display: none; } /* Hide raw text data */
+        .centered { text-align: center; margin-top: 30px; }
+        button {
+            background-color: var(--medium-blue);
+            color: var(--white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        button:hover { background-color: var(--primary-blue); }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h>BMT DevOps Group Practice</h1>
+    </header
+    <div class="container">
+        <div class="content">
+            <div class="introductions-box">
+                <h2>Team Introductions</h2>
+                <p>Our team's introductions are listed below. Edit <code>bmt-practice2.html</code> in VS Code to add yours!</p>
+                <!-- Students do NOT edit this list; JavaScript generates it from #intro-data -->
+                <ul id="introductions"></ul>
+                <!-- Students add their introduction as a single line below -->
+                <pre id="intro-data">
+                    // Add your introduction here (one line, format: I'm [name]. I live in [city]. [message].)
+                    // Example: I'm Alice. I live in New York. Excited to learn DevOps!
+                    // Add your line below this comment and save.
+                    I'm Hasegawa. I live in Tokyo. I'm enjoying my DevOps training journey. 
+                    I'm Banri. I live in Aachen. I like learning new things in DevOps.  
+                    I am Queen. I live in Belgium with my family. I love DevOps.
+                    I'm Bernadette. I live in Hasselt, Belgium. Learning Devops is an exciting journey for me.
+		    I am Daddy Ray from Belgium, DevOps and Cloud is good, just keep practising
+                </pre>
+            </div>
+            <h3>DevOps Training Website</h3>
+            <p>This group website will be used to practice collaboration with:</p>
+            <ul>
+                <li>Git - version control</li>
+                <li>GitHub - collaboration and pull requests</li>
+                <li>DevOps tools - Docker, Kubernetes, Jenkins</li>
+            </ul>
+            <div class="centered">
+                <p>Last updated: <span id="timestamp">Not updated yet</span></p>
+                <button onclick="updateTimestamp()">Update Timestamp</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Bright Mind Tech © <span id="year">2025</span></p>
+    </footer>
+    <script>
+        // Display introductions from #intro-data as a list
+        function displayIntroductions() {
+            const introData = document.getElementById('intro-data').textContent;
+            const introList = document.getElementById('introductions');
+            // Split lines, filter out comments and empty lines
+            const intros = introData.split('\n').filter(line => 
+                line.trim() && !line.trim().startsWith('//')
+            );
+            // Create list items
+            intros.forEach(intro => {
+                const li = document.createElement('li');
+                li.textContent = intro.trim();
+                introList.appendChild(li);
+            });
+        }
+        // Update timestamp
+        function updateTimestamp() {
+            let timestamp = document.getElementById('timestamp');
+            let now = new Date();
+            timestamp.textContent = now.toLocaleString();
+        }
+        // Set footer year
+        document.getElementById('year').textContent = new Date().getFullYear();
+        // Run on page load
+        displayIntroductions();
+    </script>
+</body>
+</html>
